@@ -66,7 +66,35 @@ public class FireworkRocketUpgradeRecipe extends CustomRecipe {
 
 	@Override
 	public ItemStack assemble(CraftingContainer container, RegistryAccess access) {
-		return new ItemStack(Items.FIREWORK_ROCKET, 1);
+		ItemStack fireworkRocket = null;
+		int fireworkRocketCount = 0;
+		int gunpowderCount = 0;
+
+		for(int i = 0; i < container.getContainerSize(); i++) {
+			ItemStack stack = container.getItem(i);
+
+			if(stack == null || stack.isEmpty()) {
+				continue;
+			}
+
+			if(FireworkRocketUpgradeRecipe.FIREWORK_ROCKET_INGREDIENT.test(stack)) {
+				fireworkRocket = stack;
+				fireworkRocketCount++;
+			} else if(FireworkRocketUpgradeRecipe.GUNPOWDER_INGREDIENT.test(stack)) {
+				gunpowderCount++;
+			}
+		}
+
+		fireworkRocket = fireworkRocket.copy();
+		CompoundTag fireworks = fireworkRocket.getOrCreateTagElement("Fireworks");
+		int flight = 0;
+
+		if(fireworks.contains("Flight")) {
+			flight = fireworks.getByte("Flight");
+		}
+
+		fireworks.putByte("Flight", (byte) Math.min(flight + gunpowderCount * (fireworkRocketCount == 1 ? 3 : 1), Byte.MAX_VALUE));
+		return fireworkRocket.copyWithCount(fireworkRocketCount);
 	}
 
 	@Override
