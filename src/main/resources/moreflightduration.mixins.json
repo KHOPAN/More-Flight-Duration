@@ -3,7 +3,8 @@
 	"package": "com.khopan.moreflightduration.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"FireworkRocketRecipeMixin"
+		"FireworkRocketRecipeMixin",
+		"VanillaRecipeProviderMixin"
 	],
 
 	"injectors": {
