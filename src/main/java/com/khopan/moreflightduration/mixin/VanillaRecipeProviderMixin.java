@@ -14,9 +14,9 @@ import net.minecraft.data.recipes.SpecialRecipeBuilder;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 
 @Mixin(VanillaRecipeProvider.class)
-public abstract class VanillaRecipeProviderMixin {
+public abstract class VanillaRecipeProviderMixin { // For data generator?
 	@Inject(method="buildRecipes(Ljava/util/function/Consumer;)V", at=@At("TAIL"))
-	private void buildRecipesMixin(CallbackInfo info, Consumer<FinishedRecipe> writer) {
+	private void buildRecipesMixin(Consumer<FinishedRecipe> writer, CallbackInfo info) {
 		SpecialRecipeBuilder.special(RecipeSerializerRegistry.FIREWORK_ROCKET_UPGRADE).save(writer, "firework_rocket_upgrade");
 	}
 }

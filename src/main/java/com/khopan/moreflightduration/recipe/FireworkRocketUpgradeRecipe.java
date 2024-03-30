@@ -38,6 +38,11 @@ public class FireworkRocketUpgradeRecipe extends CustomRecipe {
 	}
 
 	@Override
+	public ItemStack getResultItem(RegistryAccess registryAccess) {
+		return new ItemStack(Items.DIAMOND);
+	}
+
+	@Override
 	public RecipeSerializer<?> getSerializer() {
 		return RecipeSerializerRegistry.FIREWORK_ROCKET_UPGRADE;
 	}
