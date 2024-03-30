@@ -39,6 +39,6 @@ public class FireworkRocketUpgradeRecipe extends CustomRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return null;
+		return RecipeSerializerRegistry.FIREWORK_ROCKET_UPGRADE;
 	}
 }
