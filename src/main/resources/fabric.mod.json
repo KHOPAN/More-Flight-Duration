@@ -9,7 +9,7 @@
 		"sources": "https://github.com/KHOPAN/More-Flight-Duration"
 	},
 
-	"license": "MIT License",
+	"license": "MIT",
 	"icon": "assets/moreflightduration/logo.png",
 	"environment": "*",
 	"entrypoints": {

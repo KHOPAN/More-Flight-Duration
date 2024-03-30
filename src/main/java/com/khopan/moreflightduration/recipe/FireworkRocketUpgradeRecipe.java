@@ -10,9 +10,12 @@ import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.level.Level;
 
 public class FireworkRocketUpgradeRecipe extends CustomRecipe {
+	public static final RecipeSerializer<FireworkRocketUpgradeRecipe> RECIPE_SERIALIZER = RecipeSerializer.register("crafting_special_firework_rocket_upgrade", new SimpleCraftingRecipeSerializer<FireworkRocketUpgradeRecipe>(FireworkRocketUpgradeRecipe :: new));
+
 	private static final Ingredient FIREWORK_ROCKET_INGREDIENT = Ingredient.of(Items.FIREWORK_ROCKET);
 	private static final Ingredient GUNPOWDER_INGREDIENT = Ingredient.of(Items.GUNPOWDER);
 
@@ -109,6 +112,10 @@ public class FireworkRocketUpgradeRecipe extends CustomRecipe {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return RecipeSerializerRegistry.FIREWORK_ROCKET_UPGRADE;
+		return FireworkRocketUpgradeRecipe.RECIPE_SERIALIZER;
+	}
+
+	public static void load() {
+		// Load the class
 	}
 }

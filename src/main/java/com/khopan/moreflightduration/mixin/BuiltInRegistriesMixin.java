@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.khopan.moreflightduration.recipe.RecipeSerializerRegistry;
+import com.khopan.moreflightduration.recipe.FireworkRocketUpgradeRecipe;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 
@@ -13,6 +13,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 public abstract class BuiltInRegistriesMixin {
 	@Inject(method="bootStrap()V", at=@At("HEAD"))
 	private static void bootStrapMixin(CallbackInfo info) {
-		RecipeSerializerRegistry.load();
+		FireworkRocketUpgradeRecipe.load();
 	}
 }
